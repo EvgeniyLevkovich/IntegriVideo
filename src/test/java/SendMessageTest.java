@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
@@ -21,7 +22,6 @@ public class SendMessageTest extends WebdriverStart {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(recivedMessageXPath)));
         String recivedMessage = driver.findElement(By.xpath(recivedMessageXPath)).getText();
         assertEquals(recivedMessage, message);
-
     }
     @Test
     public void sendMessageByClick() {
@@ -55,14 +55,17 @@ public class SendMessageTest extends WebdriverStart {
         sendindMessage(message);
     }
     @Test
-    public void sendManyMessages() throws InterruptedException {
+    public void sendManyMessages() {
         String message = "Why are you running?";
-        for (int i = 0; i < 11; i++){
+        for (int i = 1; i < 11; i++) {
             WebElement input = driver.findElement(By.xpath(inputMessageAreaXpath));
             input.sendKeys(message);
             input.sendKeys(Keys.ENTER);
-            TimeUnit.SECONDS.sleep(1);
+            wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//div[@class ='integri-chat-message-container integri-chat-message-own']"), i));
         }
+        WebElement input = driver.findElement(By.xpath(inputMessageAreaXpath));
+        input.sendKeys(message);
+        input.sendKeys(Keys.ENTER);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class= 'integri-demo-version']")));
         Assert.assertTrue(driver.findElement(By.xpath("//div[@class= 'integri-demo-version']")).isDisplayed());
     }
