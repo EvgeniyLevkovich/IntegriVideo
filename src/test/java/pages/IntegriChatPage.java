@@ -13,7 +13,7 @@ public class IntegriChatPage extends  BasePage {
     private static final String URL = "https://dev.integrivideo.com/demo/chat/new";
     private static final By MESSAGE_TEXT_AREA = By.xpath("//textarea[@placeholder = 'Start typing here']");
     private static final By SEND_BUTTON = By.xpath("//button[@class ='integri-chat-send-message integri-chat-action-button']");
-    private static final By RECEIVED_MESSAGE = By.xpath("//div[@class ='integri-chat-message-text']");
+    private static final By RECEIVED_MESSAGE = By.xpath("//div[@class='integri-chat-message-text']");
     private static final By TRIAL_VERSION = By.xpath("//div[@class= 'integri-demo-version']");
     private static final By EDIT_MESSAGE_BUTTON = By.xpath("//span[@class = 'iv-icon iv-icon-pencil integri-chat-edit-message']");
     private static final By EDIT_MESSAGE_TEXT_AREA = By.xpath("//div[@class = 'integri-chat-message ']/textarea");
@@ -33,9 +33,10 @@ public class IntegriChatPage extends  BasePage {
     public void sendMessageByClick() {
         driver.findElement(SEND_BUTTON).click();
     }
-    public void checkMessage(String message) {
-        String recivedMessage = driver.findElement(RECEIVED_MESSAGE).getText();
-        assertEquals(recivedMessage, message);
+    public void checkMessage(String message, int messageNumber) {
+        wait.until(ExpectedConditions.elementToBeClickable(RECEIVED_MESSAGE));
+        String text = driver.findElements(RECEIVED_MESSAGE).get(messageNumber - 1).getText();
+        assertEquals(message, text);
     }
     public void sendMessageByEnter() {
         driver.findElement(MESSAGE_TEXT_AREA).sendKeys(Keys.ENTER);
