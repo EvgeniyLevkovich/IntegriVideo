@@ -14,7 +14,7 @@ public class IntegriChatTest extends BaseTest {
         chat.openPage();
         chat.typeMessage(message);
         chat.sendMessageByClick();
-        chat.checkMessage(message);
+        chat.checkMessage(message, 1);
     }
     @Test
     public void sendMessageByEnter() {
@@ -23,7 +23,7 @@ public class IntegriChatTest extends BaseTest {
         chat.openPage();
         chat.typeMessage(message);
         chat.sendMessageByEnter();
-        chat.checkMessage(message);
+        chat.checkMessage(message, 1);
     }
     @Test
     public void sendLongMessage() {
@@ -32,7 +32,7 @@ public class IntegriChatTest extends BaseTest {
         chat.openPage();
         chat.typeMessage(message);
         chat.sendMessageByClick();
-        chat.checkMessage(message);
+        chat.checkMessage(message, 1);
     }
     @Test
     public void sendMessageWithLink() {
@@ -41,7 +41,7 @@ public class IntegriChatTest extends BaseTest {
         chat.openPage();
         chat.typeMessage(message);
         chat.sendMessageByClick();
-        chat.checkMessage(message);
+        chat.checkMessage(message, 1);
     }
     @Test
     public void sendMessageWithHTMLCode() {
@@ -50,7 +50,7 @@ public class IntegriChatTest extends BaseTest {
         chat.openPage();
         chat.typeMessage(message);
         chat.sendMessageByClick();
-        chat.checkMessage(message);
+        chat.checkMessage(message, 1);
     }
     @Test
     public void sendManyMessages() {
@@ -69,7 +69,7 @@ public class IntegriChatTest extends BaseTest {
         chat.typeMessage(message);
         chat.sendMessageByEnter();
         chat.editMessage(editedMessage);
-        chat.checkMessage(editedMessage);
+        chat.checkMessage(editedMessage, 1);
     }
     @Test
     public void editMessageEmpty() {
