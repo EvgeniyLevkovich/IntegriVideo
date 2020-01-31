@@ -11,4 +11,4 @@ mvn -Dtest=IntegriChatTest#sendMessageByClick test
 mvn -Dtest=IntegriChatTest#sendMessageByClick+sendMessageByEnter test
 
 Альтернативный pom.xml
-mvn -f src/test/resources/pom.xml
+mvn -f pom2.xml
