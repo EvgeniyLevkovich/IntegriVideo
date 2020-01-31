@@ -23,7 +23,7 @@ public class IntegriChatPage extends  BasePage {
     public IntegriChatPage(WebDriver driver) {
         super(driver);
     }
-    public void openPage() {
+    public void openChatPage() {
         driver.get(URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
     }
