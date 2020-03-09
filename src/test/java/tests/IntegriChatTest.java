@@ -30,13 +30,12 @@ public class IntegriChatTest extends BaseTest {
     }
     @Test
     public void sendLongMessage() {
-        String message = "Etiam sit amet lectus ac tortor fringilla maximus eget vitae orci. Vestibulum nisl sapien, semper id malesuada ac, euismod ac quam. Nunc facilisis nunc tortor, sit amet convallis velit pharetra in. Praesent a massa a justo pharetra vulputate. Morbi ultricies iaculis hendrerit. Nulla sit amet tempor turpis. Vestibulum posuere vitae sapien in venenatis. Morbi non risus neque Suspendisse potenti. In interdum pretium nulla, ut molestie felis sodales nec. Pellentesque in pulvinar nulla, quis consequat nisi. Suspendisse sed risus non quam laoreet fringilla. Cras sit amet dictum lectus, a accumsan ex. Aliquam quis risus at mauris tincidunt efficitur vitae eget tellus. Sed vitae tempor ipsum. Quisque viverra nulla purus, pretium blandit ex sollicitudin non. Nam blandit nibh arcu, quis euismod leo malesuada ut. Fusce ultricies venenatis nibh at scelerisque. Aliquam elementum mi eu dolor rutrum finibus. Donec nec dolor sed massa malesuada bibendum. Pellentesque nisl sapien, tempor eu tellus ut, tristique suscipit magna. Donec non sollicitudin leo. Fusce vitae viverra magna. Praesent sagittis sit amet neque non facilisis.";
         chat = new IntegriChatPage(driver);
         chat.openPage();
-        //chat.generatelongMessage(1000);
-        chat.typeMessage(message);
+        chat.generatelongMessage(1000);
+        chat.typeMessage(chat.getgeneratelongMessage());
         chat.sendMessageByClick();
-        chat.checkMessage(message, 1);
+        chat.checkMessage(chat.getgeneratelongMessage(), 1);
     }
     @Test
     public void sendMessageWithLink() {
