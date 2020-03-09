@@ -15,6 +15,7 @@ import java.io.IOException;
 import static org.testng.Assert.assertEquals;
 
 public class IntegriChatPage extends  BasePage {
+    String longMessage = "";
     private static final String URL = "https://dev.integrivideo.com/demo/chat/new";
     private static final By MESSAGE_TEXT_AREA = By.cssSelector("[placeholder='Start typing here']");
     private static final By SEND_BUTTON = By.cssSelector("[title='Send message']");
@@ -89,13 +90,14 @@ public class IntegriChatPage extends  BasePage {
         String copiedText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         Assert.assertEquals(copiedText, editedCode);
     }
-    public String generatelongMessage(int lenght) {
-        String message = "";
-        for (int i = 0; i < lenght; i++) {
+    public void  generatelongMessage(int length) {
+        for (int i = 0; i < length; i++) {
             int symbol = (int) (Math.random() * 10);
             String str = Integer.toString(symbol);
-            message = message + str;
+            longMessage = longMessage + str;
         }
-        return message;
+    }
+    public String getgeneratelongMessage() {
+        return longMessage;
     }
 }
