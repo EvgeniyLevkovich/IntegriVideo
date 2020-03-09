@@ -7,6 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import java.awt.*;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+
 import static org.testng.Assert.assertEquals;
 
 public class IntegriChatPage extends  BasePage {
@@ -18,12 +23,14 @@ public class IntegriChatPage extends  BasePage {
     private static final By EDIT_MESSAGE_BUTTON = By.cssSelector(".integri-chat-edit-message");
     private static final By EDIT_MESSAGE_TEXT_AREA = By.cssSelector(".integri-chat-message textarea");
     private static final By ERROR_EMPTY_EDITED_MESSAGE = By.cssSelector(".integri-notify-error");
+    private static final By INVITE_Button = By.id("invite-users-to-chat");
+    private static final By CODE = By.cssSelector(".component-code");
 
 
     public IntegriChatPage(WebDriver driver) {
         super(driver);
     }
-    public void openChatPage() {
+    public void openPage() {
         driver.get(URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
     }
@@ -65,6 +72,23 @@ public class IntegriChatPage extends  BasePage {
         String errorMessage = driver.findElement(ERROR_EMPTY_EDITED_MESSAGE).getText();
         assertEquals(errorMessage, "Message cannot be empty!");
     }
+    public void getInviteLink() {
+        driver.findElement(INVITE_Button).click();
+    }
+    public void checkInviteLink() throws IOException, UnsupportedFlavorException {
+        String currentURL = driver.getCurrentUrl();
+        String invitationURL = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+        Assert.assertEquals(currentURL, invitationURL);
+    }
+    public void getCode() {
+        driver.findElement(CODE).click();
+    }
+    public void checkCode() throws IOException, UnsupportedFlavorException {
+        String code = driver.findElement(CODE).getText();
+        String editedCode = code.replaceAll("\n", "");
+        String copiedText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
+        Assert.assertEquals(copiedText, editedCode);
+    }
     public String generatelongMessage(int lenght) {
         String message = "";
         for (int i = 0; i < lenght; i++) {
@@ -74,5 +98,4 @@ public class IntegriChatPage extends  BasePage {
         }
         return message;
     }
-
 }
