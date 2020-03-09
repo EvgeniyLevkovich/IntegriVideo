@@ -9,11 +9,11 @@ import static org.testng.Assert.assertEquals;
 
 public class IntegriSettingsModal extends BasePage {
     private static final String URL = "https://dev.integrivideo.com/demo/chat/new";
-    private static final By MESSAGE_TEXT_AREA = By.xpath("//textarea[@placeholder = 'Start typing here']");
-    private static final By SETTING_BUTTON = By.xpath("//span[@class ='iv-icon iv-icon-cog']");
-    private static final By USERNAME_FIELD = By.xpath("//input[@name ='userName']");
-    private static final By SAVE_SETTINGS = By.xpath("//button[@class='integri-user-settings-save integri-button-blue']");
-    private static final By SESSION_USERNAME = By.xpath("//div[@class = 'integri-session-user-name']");
+    private static final By MESSAGE_TEXT_AREA = By.cssSelector("[placeholder='Start typing here']");
+    private static final By SETTING_BUTTON = By.cssSelector(".iv-icon-cog");
+    private static final By USERNAME_FIELD = By.cssSelector("[name ='userName']");
+    private static final By SAVE_SETTINGS = By.cssSelector(".integri-user-settings-save");
+    private static final By SESSION_USERNAME = By.cssSelector("div.integri-session-user-name");
 
 
     public IntegriSettingsModal(WebDriver driver) {

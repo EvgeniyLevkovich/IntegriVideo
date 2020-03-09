@@ -11,13 +11,13 @@ import static org.testng.Assert.assertEquals;
 
 public class IntegriChatPage extends  BasePage {
     private static final String URL = "https://dev.integrivideo.com/demo/chat/new";
-    private static final By MESSAGE_TEXT_AREA = By.xpath("//textarea[@placeholder = 'Start typing here']");
-    private static final By SEND_BUTTON = By.xpath("//button[@class ='integri-chat-send-message integri-chat-action-button']");
-    private static final By RECEIVED_MESSAGE = By.xpath("//div[@class='integri-chat-message-text']");
-    private static final By TRIAL_VERSION = By.xpath("//div[@class= 'integri-demo-version']");
-    private static final By EDIT_MESSAGE_BUTTON = By.xpath("//span[@class = 'iv-icon iv-icon-pencil integri-chat-edit-message']");
-    private static final By EDIT_MESSAGE_TEXT_AREA = By.xpath("//div[@class = 'integri-chat-message ']/textarea");
-    private static final By ERROR_EMPTY_EDITED_MESSAGE = By.xpath("//div[@class = 'integri-notify integri-notify-error']");
+    private static final By MESSAGE_TEXT_AREA = By.cssSelector("[placeholder='Start typing here']");
+    private static final By SEND_BUTTON = By.cssSelector("[title='Send message']");
+    private static final By RECEIVED_MESSAGE = By.cssSelector(".integri-chat-message-text");
+    private static final By TRIAL_VERSION = By.cssSelector(".integri-demo-version");
+    private static final By EDIT_MESSAGE_BUTTON = By.cssSelector(".integri-chat-edit-message");
+    private static final By EDIT_MESSAGE_TEXT_AREA = By.cssSelector(".integri-chat-message textarea");
+    private static final By ERROR_EMPTY_EDITED_MESSAGE = By.cssSelector(".integri-notify-error");
 
 
     public IntegriChatPage(WebDriver driver) {
@@ -45,7 +45,7 @@ public class IntegriChatPage extends  BasePage {
         for (int i = 0; i < count; i++) {
             driver.findElement(MESSAGE_TEXT_AREA).sendKeys(message);
             driver.findElement(SEND_BUTTON).click();
-            wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//div[@class ='integri-chat-message-container integri-chat-message-own']"), i + 1));
+            wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(".integri-chat-message-container"), i + 1));
         }
         driver.findElement(MESSAGE_TEXT_AREA).sendKeys(message);
         driver.findElement(SEND_BUTTON).click();
@@ -64,6 +64,15 @@ public class IntegriChatPage extends  BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ERROR_EMPTY_EDITED_MESSAGE));
         String errorMessage = driver.findElement(ERROR_EMPTY_EDITED_MESSAGE).getText();
         assertEquals(errorMessage, "Message cannot be empty!");
+    }
+    public String generatelongMessage(int lenght) {
+        String message = "";
+        for (int i = 0; i < lenght; i++) {
+            int symbol = (int) (Math.random() * 10);
+            String str = Integer.toString(symbol);
+            message = message + str;
+        }
+        return message;
     }
 
 }
