@@ -6,12 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-
 import static org.testng.Assert.assertEquals;
 
 public class IntegriChatPage extends  BasePage {
@@ -31,25 +29,30 @@ public class IntegriChatPage extends  BasePage {
     public IntegriChatPage(WebDriver driver) {
         super(driver);
     }
-    public void openPage() {
+    public IntegriChatPage openPage() {
         driver.get(URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
+        return this;
     }
-    public void typeMessage(String message) {
+    public IntegriChatPage typeMessage(String message) {
         driver.findElement(MESSAGE_TEXT_AREA).sendKeys(message);
+        return this;
     }
-    public void sendMessageByClick() {
+    public IntegriChatPage sendMessageByClick() {
         driver.findElement(SEND_BUTTON).click();
+        return this;
     }
-    public void checkMessage(String message, int messageNumber) {
+    public IntegriChatPage checkMessage(String message, int messageNumber) {
         wait.until(ExpectedConditions.elementToBeClickable(RECEIVED_MESSAGE));
         String text = driver.findElements(RECEIVED_MESSAGE).get(messageNumber - 1).getText();
         assertEquals(message, text);
+        return this;
     }
-    public void sendMessageByEnter() {
+    public IntegriChatPage sendMessageByEnter() {
         driver.findElement(MESSAGE_TEXT_AREA).sendKeys(Keys.ENTER);
+        return this;
     }
-    public void sendManyMessages(int count, String message) {
+    public IntegriChatPage sendManyMessages(int count, String message) {
         for (int i = 0; i < count; i++) {
             driver.findElement(MESSAGE_TEXT_AREA).sendKeys(message);
             driver.findElement(SEND_BUTTON).click();
@@ -57,45 +60,54 @@ public class IntegriChatPage extends  BasePage {
         }
         driver.findElement(MESSAGE_TEXT_AREA).sendKeys(message);
         driver.findElement(SEND_BUTTON).click();
+        return this;
     }
-    public void checkForTrialVersion() {
+    public IntegriChatPage checkForTrialVersion() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(TRIAL_VERSION));
         Assert.assertTrue(driver.findElement(TRIAL_VERSION).isDisplayed());
+        return this;
     }
-    public void editMessage(String editedMessage) {
+    public IntegriChatPage editMessage(String editedMessage) {
         driver.findElement(EDIT_MESSAGE_BUTTON).click();
         WebElement editMessage = driver.findElement(EDIT_MESSAGE_TEXT_AREA);
         editMessage.clear();
         editMessage.sendKeys(editedMessage,Keys.ENTER);
+        return this;
     }
-    public void checkForEmptyEditedMessage() {
+    public IntegriChatPage checkForEmptyEditedMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(ERROR_EMPTY_EDITED_MESSAGE));
         String errorMessage = driver.findElement(ERROR_EMPTY_EDITED_MESSAGE).getText();
         assertEquals(errorMessage, "Message cannot be empty!");
+        return this;
     }
-    public void getInviteLink() {
+    public IntegriChatPage getInviteLink() {
         driver.findElement(INVITE_Button).click();
+        return this;
     }
-    public void checkInviteLink() throws IOException, UnsupportedFlavorException {
+    public IntegriChatPage checkInviteLink() throws IOException, UnsupportedFlavorException {
         String currentURL = driver.getCurrentUrl();
         String invitationURL = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         Assert.assertEquals(currentURL, invitationURL);
+        return this;
     }
-    public void getCode() {
+    public IntegriChatPage getCode() {
         driver.findElement(CODE).click();
+        return this;
     }
-    public void checkCode() throws IOException, UnsupportedFlavorException {
+    public IntegriChatPage checkCode() throws IOException, UnsupportedFlavorException {
         String code = driver.findElement(CODE).getText();
         String editedCode = code.replaceAll("\n", "");
         String copiedText = (String) Toolkit.getDefaultToolkit().getSystemClipboard().getData(DataFlavor.stringFlavor);
         Assert.assertEquals(copiedText, editedCode);
+        return this;
     }
-    public void  generatelongMessage(int length) {
+    public IntegriChatPage  generatelongMessage(int length) {
         for (int i = 0; i < length; i++) {
             int symbol = (int) (Math.random() * 10);
             String str = Integer.toString(symbol);
             longMessage = longMessage + str;
         }
+        return this;
     }
     public String getgeneratelongMessage() {
         return longMessage;
