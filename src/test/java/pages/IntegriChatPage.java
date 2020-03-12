@@ -29,6 +29,12 @@ public class IntegriChatPage extends  BasePage {
     public IntegriChatPage(WebDriver driver) {
         super(driver);
     }
+
+    @Override
+    public IntegriChatPage isPageOpened() {
+        return this;
+    }
+
     public IntegriChatPage openPage() {
         driver.get(URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));

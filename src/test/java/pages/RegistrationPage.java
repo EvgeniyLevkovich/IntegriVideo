@@ -16,6 +16,14 @@ public class RegistrationPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public RegistrationPage isPageOpened() {
+        return this;
+    }
+    @Override
+    public RegistrationPage openPage() {
+        return this;
+    }
     public RegistrationPage openRegistrationPage() {
         driver.get(URL);
         return this;

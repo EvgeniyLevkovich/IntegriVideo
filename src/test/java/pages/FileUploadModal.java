@@ -18,6 +18,12 @@ public class FileUploadModal extends BasePage {
     public FileUploadModal(WebDriver driver) {
         super(driver);
     }
+
+    @Override
+    public FileUploadModal isPageOpened() {
+        return this;
+    }
+
     public FileUploadModal openPage() {
         driver.get(URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));

@@ -26,8 +26,13 @@ public class BillingPage extends BasePage {
     public BillingPage(WebDriver driver) {
         super(driver);
     }
-    public BillingPage openBillingPage() {
+    public BillingPage isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ADD_NEW_METHODS_BUTTON));
+        return this;
+    }
+    public BillingPage openPage() {
         driver.findElement(BILLING_BUTTON).click();
+        isPageOpened();
         return this;
     }
     public BillingPage addNewCard(String CardNumber, String month, String year, String CardholderName) {

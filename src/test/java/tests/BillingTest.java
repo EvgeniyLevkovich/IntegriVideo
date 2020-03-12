@@ -1,5 +1,6 @@
 package tests;
 
+import models.User;
 import org.testng.annotations.Test;
 import pages.BillingPage;
 import pages.LoginPage;
@@ -11,32 +12,35 @@ public class BillingTest extends BaseTest {
 
     @Test
     public void addCart() {
+        User user = new User("integri@mailinator.com", "qwerty12345");
         login = new LoginPage(driver)
                 .openPage()
-                .login("integri@mailinator.com", "qwerty12345")
+                .login(user)
                 .isLoginValid();
         billing = new BillingPage(driver)
-                .openBillingPage()
+                .openPage()
                 .addNewCard("4242 4242 4242 4242", "10", "2021", "JACK DANIELS");
     }
     @Test
     public void makeCardDefault() {
+        User user = new User("integri@mailinator.com", "qwerty12345");
         login = new LoginPage(driver)
                 .openPage()
-                .login("integri@mailinator.com", "qwerty12345")
+                .login(user)
                 .isLoginValid();
         billing = new BillingPage(driver)
-                .openBillingPage()
+                .openPage()
                 .makeDefault(1);
     }
     @Test
     public void removeCard() {
+        User user = new User("integri@mailinator.com", "qwerty12345");
         login = new LoginPage(driver)
                 .openPage()
-                .login("integri@mailinator.com", "qwerty12345")
+                .login(user)
                 .isLoginValid();
         billing = new BillingPage(driver)
-                .openBillingPage()
+                .openPage()
                 .removeCard(1);
     }
 }
