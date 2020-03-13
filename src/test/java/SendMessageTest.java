@@ -178,7 +178,6 @@ public class SendMessageTest extends WebdriverStart {
         String image1 = "src/test/resources/1.jpg";
         WebElement uploadButton = driver.findElement(By.xpath(uploadButtonXpath));
         uploadButton.click();
-        driver.findElement(By.xpath("//span[@class = 'integri-file-upload-manual-init']")).click();
         File file = new File(image1);
         driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(file.getAbsolutePath());
         driver.findElement(By.xpath("//button[@class='integri-file-upload-start integri-float-right integri-button-blue']")).click();
@@ -189,7 +188,6 @@ public class SendMessageTest extends WebdriverStart {
         String image2 = "src/test/resources/2.jpg";
         WebElement uploadButton = driver.findElement(By.xpath(uploadButtonXpath));
         uploadButton.click();
-        driver.findElement(By.xpath("//span[@class = 'integri-file-upload-manual-init']")).click();
         File file1 = new File(image1);
         File file2 = new File(image2);
         driver.findElement(By.xpath("//input[@type = 'file']")).sendKeys(file1.getAbsolutePath());
