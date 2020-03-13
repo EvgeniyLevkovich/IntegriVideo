@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import static org.testng.Assert.assertEquals;
 
 public class IntegriSettingsModal extends BasePage {
@@ -21,47 +20,61 @@ public class IntegriSettingsModal extends BasePage {
     public IntegriSettingsModal(WebDriver driver) {
         super(driver);
     }
-    public void openPage() {
+
+    @Override
+    public IntegriSettingsModal isPageOpened() {
+        return this;
+    }
+
+    public IntegriSettingsModal openPage() {
         driver.get(URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
+        return this;
     }
-     public void openSettingsForm() {
+     public IntegriSettingsModal openSettingsForm() {
          WebElement settingButton = driver.findElement(SETTING_BUTTON);
          settingButton.click();
          wait.until(ExpectedConditions.visibilityOfElementLocated(USERNAME_FIELD));
+         return this;
      }
-     public void editUsername (String name) {
+     public IntegriSettingsModal editUsername (String name) {
          WebElement nameField = driver.findElement(USERNAME_FIELD);
          nameField.clear();
          nameField.sendKeys(name);
+         return this;
      }
-     public void saveSettings () {
+     public IntegriSettingsModal saveSettings () {
          driver.findElement(SAVE_SETTINGS).click();
          wait.until(ExpectedConditions.invisibilityOfElementLocated(USERNAME_FIELD));
+         return this;
      }
-     public void checkNickname (String name) {
+     public IntegriSettingsModal checkNickname (String name) {
          String userName = driver.findElement(SESSION_USERNAME).getText();
          assertEquals(userName, name);
+         return this;
      }
-     public void editEmail (String email) {
+     public IntegriSettingsModal editEmail (String email) {
         WebElement emailField = driver.findElement(EMAIL_FIELD);
         emailField.clear();
         emailField.sendKeys(email);
+         return this;
      }
-     public void checkEmail (String email) {
+     public IntegriSettingsModal checkEmail (String email) {
          openSettingsForm();
          String newEmail = driver.findElement(EMAIL_FIELD).getAttribute("value");
          assertEquals(newEmail, email);
+         return this;
      }
-     public void editAvatar (String avatarLink) {
+     public IntegriSettingsModal editAvatar (String avatarLink) {
         WebElement AvatarLinkField = driver.findElement(AVATARLINK_FIELD);
          AvatarLinkField.clear();
          AvatarLinkField.sendKeys(avatarLink);
+         return this;
      }
-    public void checkAvatar (String avatarLink) {
+    public IntegriSettingsModal checkAvatar (String avatarLink) {
         openSettingsForm();
         String newAvatarLink = driver.findElement(AVATARLINK_FIELD).getAttribute("value");
         assertEquals(newAvatarLink, avatarLink);
+        return this;
     }
-
 }

@@ -1,14 +1,11 @@
-Обновить версии всех библиотек в проекте:
-mvn versions:display-dependency-updates
-
-Запустить тесты используя mvn clean test команду:
-mvn -Dtest=IntegriChatTest test
-
-Запустить конкретный метод:
-mvn -Dtest=IntegriChatTest#sendMessageByClick test
-
-Запустить два теста:
-mvn -Dtest=IntegriChatTest#sendMessageByClick+sendMessageByEnter test
-
-Альтернативный pom.xml
-mvn -f pom2.xml
+1. Логин используя корректные данные
+2. Логин, используя некорректные данные
+3. Добавление нового проекта
+4. Посчитать количествл проектов
+5. Добавить компонент
+6. Удалить компонент
+7. Добавление новой карты
+8. Посчитать карты
+9. Сделать карту основной
+10. Удаление карты
+11. Забыл пароль
