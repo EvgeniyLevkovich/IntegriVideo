@@ -22,12 +22,12 @@ public class LoginPage extends BasePage {
     @FindBy(css = ".btn-primary")
     WebElement loginButton;
     @FindBy(css = ".iv-icon-exit-right")
-    WebElement logioutButton;
+    WebElement logoutButton;
 
     /*private static final By EMAIL = By.name("email");
     private static final By PASSWORD = By.name("password");
     private static final By LOGIN_BUTTON = By.cssSelector(".btn-primary");
-    private static final By LOGOUT_BUTTON = By.cssSelector("a.btn[href='/logout']");
+    private static final By LOGOUT_BUTTON = By.cssSelector(".iv-icon-exit-right]");
      */
 
     public LoginPage(WebDriver driver) {
@@ -51,22 +51,16 @@ public class LoginPage extends BasePage {
     }
     public LoginPage isLoginValid() {
         String currentUrl = driver.getCurrentUrl();
-        assertEquals("https://dev.integrivideo.com/app/projects", currentUrl, "Logim isn't successful");
+        assertEquals("https://dev.integrivideo.com/app/projects", currentUrl, "Login isn't successful");
         return this;
     }
-    public LoginPage isPasswordInvalid() {
-        WebElement notification = driver.findElement(By.xpath("//*[text()='Error: Password is incorrect']"));
-        assertTrue(notification.isDisplayed(), "Notification isn't displayed");
-        return this;
-    }
-    public LoginPage isUserNotFound() {
-        WebElement notification = driver.findElement(By.xpath("//*[text()='Error: User is not found']"));
-        assertTrue(notification.isDisplayed(), "Notification isn't displayed");
+    public LoginPage notificatonCheck(String notificaton) {
+        assertTrue(driver.findElement(By.xpath("//*[text()='" + notificaton + "']")).isDisplayed(), "Notification isn't displayed");
         return this;
     }
     public LoginPage logout() {
         driver.get(URL);
-        logioutButton.click();
+        logoutButton.click();
         assertEquals(driver.getCurrentUrl(), "https://dev.integrivideo.com/", "Logout isn't successful");
         return this;
     }

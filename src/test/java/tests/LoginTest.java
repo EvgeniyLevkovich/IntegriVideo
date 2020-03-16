@@ -31,15 +31,15 @@ public class LoginTest extends BaseTest{
         login = new LoginPage(driver)
             .openPage()
             .login(user)
-            .isPasswordInvalid();
+            .notificatonCheck("Error: Password is incorrect");
     }
     @Test
-    public void userIsNotFound() {
+    public void invalidLogin() {
         User user = new User("integriqwerty@mailinator.com", "qwerty12345");
         login = new LoginPage(driver)
             .openPage()
             .login(user)
-            .isUserNotFound();
+            .notificatonCheck("Error: User is not found");
     }
     @Test
     public void logout() {

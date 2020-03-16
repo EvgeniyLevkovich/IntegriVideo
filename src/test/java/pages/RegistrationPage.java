@@ -10,7 +10,7 @@ public class RegistrationPage extends BasePage {
     private static final By EMAIL_FIELD = By.name("email");
     private static final By PASWORD_FIELD = By.name("password");
     private static final By LOGIN_BUTTON = By.cssSelector(".btn-primary");
-
+    private static final By NOTIFICATION_MESSAGE = By.xpath("//*[text()='Message with instructions was sent']");
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
@@ -35,8 +35,8 @@ public class RegistrationPage extends BasePage {
         return this;
     }
     public RegistrationPage checkNotificationMessage() {
-        WebElement notifiction = driver.findElement(By.xpath("//*[text()='Message with instructions was sent']"));
-        assertTrue(notifiction.isDisplayed());
+        WebElement notification = driver.findElement(NOTIFICATION_MESSAGE);
+        assertTrue(notification.isDisplayed());
         return this;
     }
 }
