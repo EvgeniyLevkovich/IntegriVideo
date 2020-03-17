@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import static org.testng.Assert.assertTrue;
 
 public class RegistrationPage extends BasePage {
@@ -15,17 +17,13 @@ public class RegistrationPage extends BasePage {
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
-
-    @Override
     public RegistrationPage isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON ));
         return this;
     }
-    @Override
     public RegistrationPage openPage() {
-        return this;
-    }
-    public RegistrationPage openRegistrationPage() {
         driver.get(URL);
+        isPageOpened();
         return this;
     }
     public RegistrationPage  setRegistrationData (String email, String password) {

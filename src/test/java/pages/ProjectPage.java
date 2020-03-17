@@ -10,17 +10,14 @@ public class ProjectPage extends BasePage {
     public ProjectPage(WebDriver driver) {
         super(driver);
     }
-
     @Override
     public ProjectPage isPageOpened() {
         return this;
     }
     @Override
     public ProjectPage openPage() {
-        return this;
-    }
-    public ProjectPage openProjectPage() {
         driver.findElement(PROJECT_BUTON).click();
+        isPageOpened();
         return this;
     }
     public ProjectPage addNewProject() {

@@ -17,7 +17,7 @@ public class ProjectsTest extends BaseTest {
                 .login(user)
                 .isLoginValid();
         project = new ProjectPage(driver)
-                .openProjectPage()
+                .openPage()
                 .addNewProject();
 
 
