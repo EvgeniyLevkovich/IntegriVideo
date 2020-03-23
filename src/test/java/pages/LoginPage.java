@@ -24,11 +24,6 @@ public class LoginPage extends BasePage {
     @FindBy(css = ".iv-icon-exit-right")
     WebElement logoutButton;
 
-    /*private static final By EMAIL = By.name("email");
-    private static final By PASSWORD = By.name("password");
-    private static final By LOGIN_BUTTON = By.cssSelector(".btn-primary");
-    private static final By LOGOUT_BUTTON = By.cssSelector(".iv-icon-exit-right]");
-     */
 
     public LoginPage(WebDriver driver) {
         super(driver);

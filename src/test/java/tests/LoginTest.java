@@ -14,7 +14,7 @@ public class LoginTest extends BaseTest{
     public void registration() {
         registration = new RegistrationPage(driver)
             .openPage()
-            .setRegistrationData(UUID.randomUUID().toString() + "@mailinator.com", "12345678")
+            .setRegistrationData(UUID.randomUUID().toString() + "@mailinator.com", System.getProperty("password"))
             .checkNotificationMessage();
     }
     @Test
