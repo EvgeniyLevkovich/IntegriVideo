@@ -13,7 +13,7 @@ mvn clean test -Dtest=LoginTest#logout
 5. Запуск нескольких тестов:
 mvn clean test -Dtest=LoginTest#logout+invalidPassword 
 
-6. Запуск билда через альренативный POM.xml
+6. Запуск билда через альтернативный POM.xml
 mvn clean test -f src/test/resources/pom.xml
 
 7. Запуск теста registration() с параметром "password" :
