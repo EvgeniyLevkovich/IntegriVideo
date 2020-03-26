@@ -13,8 +13,8 @@ public class LoginTest extends BaseTest{
     @Test
     public void registration() {
         registration = new RegistrationPage(driver)
-            .openRegistrationPage()
-            .setRegistrationData(UUID.randomUUID().toString() + "@mailinator.com", "12345678")
+            .openPage()
+            .setRegistrationData(UUID.randomUUID().toString() + "@mailinator.com", System.getProperty("password"))
             .checkNotificationMessage();
     }
     @Test
@@ -31,15 +31,15 @@ public class LoginTest extends BaseTest{
         login = new LoginPage(driver)
             .openPage()
             .login(user)
-            .isPasswordInvalid();
+            .notificatonCheck("Error: Password is incorrect");
     }
     @Test
-    public void userIsNotFound() {
+    public void invalidLogin() {
         User user = new User("integriqwerty@mailinator.com", "qwerty12345");
         login = new LoginPage(driver)
             .openPage()
             .login(user)
-            .isUserNotFound();
+            .notificatonCheck("Error: User is not found");
     }
     @Test
     public void logout() {

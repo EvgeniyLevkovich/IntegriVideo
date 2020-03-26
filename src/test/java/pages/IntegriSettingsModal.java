@@ -20,15 +20,13 @@ public class IntegriSettingsModal extends BasePage {
     public IntegriSettingsModal(WebDriver driver) {
         super(driver);
     }
-
-    @Override
     public IntegriSettingsModal isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
         return this;
     }
-
     public IntegriSettingsModal openPage() {
         driver.get(URL);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
+        isPageOpened();
         return this;
     }
      public IntegriSettingsModal openSettingsForm() {

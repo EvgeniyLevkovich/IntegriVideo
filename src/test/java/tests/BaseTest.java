@@ -17,8 +17,8 @@ public  class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
-    /*@AfterMethod
+    @AfterMethod
     public void closeBrowser() {
         driver.quit();
-    }*/
+    }
 }

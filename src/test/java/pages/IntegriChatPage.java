@@ -29,15 +29,13 @@ public class IntegriChatPage extends  BasePage {
     public IntegriChatPage(WebDriver driver) {
         super(driver);
     }
-
-    @Override
     public IntegriChatPage isPageOpened() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
         return this;
     }
-
     public IntegriChatPage openPage() {
         driver.get(URL);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(MESSAGE_TEXT_AREA));
+        isPageOpened();
         return this;
     }
     public IntegriChatPage typeMessage(String message) {
