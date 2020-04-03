@@ -30,7 +30,7 @@ public class BillingTest extends BaseTest {
                 .isLoginValid();
         billing = new BillingPage(driver)
                 .openPage()
-                .makeDefault(1);
+                .makeDefault(3);
     }
     @Test
     public void removeCard() {

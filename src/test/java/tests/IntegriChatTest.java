@@ -31,8 +31,8 @@ public class IntegriChatTest extends BaseTest {
     public void sendLongMessage() {
         chat = new IntegriChatPage(driver)
             .openPage()
-            .generatelongMessage(1000)
-            .typeMessage(chat.getgeneratelongMessage())
+            .generatelongMessage(1000);
+        chat.typeMessage(chat.getgeneratelongMessage())
             .sendMessageByClick()
             .checkMessage(chat.getgeneratelongMessage(), 1);
     }

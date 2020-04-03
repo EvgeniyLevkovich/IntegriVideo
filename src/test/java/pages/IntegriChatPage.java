@@ -105,7 +105,7 @@ public class IntegriChatPage extends  BasePage {
         Assert.assertEquals(copiedText, editedCode);
         return this;
     }
-    public IntegriChatPage  generatelongMessage(int length) {
+    public IntegriChatPage generatelongMessage(int length) {
         for (int i = 0; i < length; i++) {
             int symbol = (int) (Math.random() * 10);
             String str = Integer.toString(symbol);
