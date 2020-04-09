@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class LoginTest extends BaseTest{
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, enabled = false)
     public void registration() {
         registration
             .openPage()

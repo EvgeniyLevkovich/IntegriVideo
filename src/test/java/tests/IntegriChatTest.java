@@ -47,7 +47,7 @@ public class IntegriChatTest extends BaseTest {
             .checkMessage(message, 1);
     }
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, enabled = false)
     public void sendMessageWithHTMLCode() {
         String message = "<html><body><p>test</p></body></html>";
         chat
