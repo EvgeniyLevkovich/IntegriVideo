@@ -5,7 +5,7 @@ import utils.Retry;
 
 public class UploadTest extends BaseTest {
 
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, enabled = false)
     public void uploadImage() {
         String image1 = "src/test/resources/1.txt";
         chatUpload
@@ -14,7 +14,7 @@ public class UploadTest extends BaseTest {
             .uploadFile(image1)
             .verifyFile("1.txt");
     }
-    @Test(retryAnalyzer = Retry.class)
+    @Test(retryAnalyzer = Retry.class, enabled = false)
     public void uploadImages() {
         String image1 = "src/test/resources/1.txt";
         String image2 = "src/test/resources/2.txt";
