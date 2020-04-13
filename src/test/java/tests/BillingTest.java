@@ -2,44 +2,42 @@ package tests;
 
 import models.User;
 import org.testng.annotations.Test;
-import pages.BillingPage;
-import pages.LoginPage;
+import utils.Retry;
 
 public class BillingTest extends BaseTest {
 
-    LoginPage login;
-    BillingPage billing;
-
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void addCart() {
         User user = new User("integri@mailinator.com", "qwerty12345");
-        login = new LoginPage(driver)
+        login
                 .openPage()
                 .login(user)
                 .isLoginValid();
-        billing = new BillingPage(driver)
+        billing
                 .openPage()
                 .addNewCard("4242 4242 4242 4242", "10", "2021", "JACK DANIELS");
     }
-    @Test
+
+    @Test(retryAnalyzer = Retry.class)
     public void makeCardDefault() {
         User user = new User("integri@mailinator.com", "qwerty12345");
-        login = new LoginPage(driver)
+        login
                 .openPage()
                 .login(user)
                 .isLoginValid();
-        billing = new BillingPage(driver)
+        billing
                 .openPage()
-                .makeDefault(3);
+                .makeDefault(2);
     }
-    @Test
+
+    @Test(retryAnalyzer = Retry.class)
     public void removeCard() {
         User user = new User("integri@mailinator.com", "qwerty12345");
-        login = new LoginPage(driver)
+        login
                 .openPage()
                 .login(user)
                 .isLoginValid();
-        billing = new BillingPage(driver)
+        billing
                 .openPage()
                 .removeCard(1);
     }

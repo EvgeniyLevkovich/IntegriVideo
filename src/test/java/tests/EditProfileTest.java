@@ -1,36 +1,36 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.IntegriSettingsModal;
+import utils.Retry;
 
 public class EditProfileTest extends BaseTest {
 
-    IntegriSettingsModal chat;
-
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void editName() {
         String name = "Jack";
-        chat = new IntegriSettingsModal(driver)
+        chatSettings
             .openPage()
             .openSettingsForm()
             .editUsername(name)
             .saveSettings()
             .checkNickname(name);
     }
-    @Test
+
+    @Test(retryAnalyzer = Retry.class)
     public void editEmail() {
         String email = "Jack@gmail.com";
-        chat = new IntegriSettingsModal(driver)
+        chatSettings
             .openPage()
             .openSettingsForm()
             .editEmail(email)
             .saveSettings()
             .checkEmail(email);
     }
-    @Test
+
+    @Test(retryAnalyzer = Retry.class)
     public void editAvatar() {
         String avatarLink = "https://www.meme-arsenal.com/memes/f12da8809c395f26ef6454287ff4c844.jpg";
-        chat = new IntegriSettingsModal(driver)
+        chatSettings
             .openPage()
             .openSettingsForm()
             .editAvatar(avatarLink)
