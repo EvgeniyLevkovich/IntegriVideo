@@ -27,7 +27,7 @@ public class BillingTest extends BaseTest {
                 .isLoginValid();
         billing
                 .openPage()
-                .makeDefault(2);
+                .makeDefault(1);
     }
 
     @Test(retryAnalyzer = Retry.class)
