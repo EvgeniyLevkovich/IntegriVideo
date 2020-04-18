@@ -1,5 +1,6 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -7,9 +8,9 @@ import org.testng.annotations.BeforeMethod;
 import pages.*;
 import steps.LoginSteps;
 import utils.CapabilitiesGenerator;
-
 import java.util.concurrent.TimeUnit;
 
+@Log4j2
 public  class BaseTest {
 
     WebDriver driver;
@@ -22,9 +23,8 @@ public  class BaseTest {
     ProjectPage project;
     FileUploadModal chatUpload;
 
-    @BeforeMethod
+    @BeforeMethod(description = "Opening Chrome Driver")
     public void setUp() {
-        //System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/chromedriver.exe");
         driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -38,7 +38,7 @@ public  class BaseTest {
         chatUpload = new FileUploadModal(driver);
     }
 
-    @AfterMethod
+    @AfterMethod(description = "Closing browser")
     public void closeBrowser() {
         driver.quit();
     }

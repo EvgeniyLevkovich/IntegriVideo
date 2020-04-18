@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.AllureUtils;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -33,17 +35,21 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(loginButton));
         return this;
     }
+    @Step("Opening page")
     public LoginPage openPage() {
         driver.get(URL);
         isPageOpened();
+        AllureUtils.takeScreenshot(driver);
         return this;
     }
+    @Step("Login")
     public LoginPage login(User user) {
         emailField.sendKeys(user.getEmail());
         passwordField.sendKeys(user.getPassword());
         loginButton.click();
         return this;
     }
+
     public LoginPage isLoginValid() {
         String currentUrl = driver.getCurrentUrl();
         assertEquals("https://dev.integrivideo.com/app/projects", currentUrl, "Login isn't successful");
