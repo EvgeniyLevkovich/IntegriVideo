@@ -44,5 +44,4 @@ public class ProjectPage extends BasePage {
         driver.findElement(CREATE_BUTTON).click();
         return this;
     }
-
 }
