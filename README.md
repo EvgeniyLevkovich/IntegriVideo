@@ -1,9 +1,14 @@
 Данный фреймворк создан для автоматизации тестирования сайта https://dev.integrivideo.com/
 
+
 Проект создан с ипользованием Java 8, Selenium, TestNG и Maven
+
 Применены паттерны проектирования: Page object, Page Factory, Chain of invocations, Loadable Page 
+
 Репортинг: Allure Report
+
 Непрерывная интеграция: CircleCI
+
 
 Чеклист:
 
